@@ -1,14 +1,20 @@
 ---
 import { business } from '../data/business.js';
+import { trailers } from '../data/trailers.js';
 import PhoneIcon from './PhoneIcon.astro';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/trailers', label: 'Trailers' },
-  { href: '/service-area', label: 'Service Area' },
+  { href: '/trailers', label: 'Trailers', dropdown: true },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
+
+// Sub-links for the Trailers dropdown, generated from the trailers data.
+const trailerLinks = trailers.map((t) => ({
+  href: `/trailers/${t.slug}`,
+  label: t.name,
+}));
 ---
 
 <!-- Top utility bar: phone + service line, full width -->
@@ -48,16 +54,64 @@ const navLinks = [
     <!-- Desktop nav -->
     <ul class="hidden items-center gap-6 md:flex">
       {
-        navLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class="text-sm font-semibold text-navy transition-colors hover:text-blue"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))
+        navLinks.map((link) =>
+          link.dropdown ? (
+            <li class="group relative">
+              <a
+                href={link.href}
+                class="inline-flex items-center gap-1 text-sm font-semibold text-navy transition-colors hover:text-blue"
+                aria-haspopup="true"
+              >
+                {link.label}
+                <svg
+                  class="h-4 w-4 transition-transform group-hover:rotate-180"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+                </svg>
+              </a>
+              {/* Dropdown panel. pt-2 keeps a hover bridge to the trigger. */}
+              <div class="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <ul class="min-w-[220px] rounded-lg border border-border bg-surface py-2 shadow-[var(--shadow-card-hover)]">
+                  <li>
+                    <a
+                      href={link.href}
+                      class="block px-4 py-2 text-sm font-semibold text-navy hover:bg-page hover:text-blue"
+                    >
+                      All Trailers
+                    </a>
+                  </li>
+                  <li aria-hidden="true">
+                    <hr class="my-1 border-border" />
+                  </li>
+                  {trailerLinks.map((sub) => (
+                    <li>
+                      <a
+                        href={sub.href}
+                        class="block px-4 py-2 text-sm font-medium text-navy hover:bg-page hover:text-blue"
+                      >
+                        {sub.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ) : (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm font-semibold text-navy transition-colors hover:text-blue"
+              >
+                {link.label}
+              </a>
+            </li>
+          )
+        )
       }
     </ul>
 
@@ -107,6 +161,20 @@ const navLinks = [
             >
               {link.label}
             </a>
+            {link.dropdown && (
+              <ul class="mb-1 ml-3 flex flex-col gap-1 border-l border-border pl-3">
+                {trailerLinks.map((sub) => (
+                  <li>
+                    <a
+                      href={sub.href}
+                      class="block rounded-md px-2 py-2 text-sm font-medium text-muted hover:bg-page hover:text-blue"
+                    >
+                      {sub.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))
       }
