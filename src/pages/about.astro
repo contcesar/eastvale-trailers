@@ -6,16 +6,16 @@ import CTASection from '../components/CTASection.astro';
 import { business } from '../data/business.js';
 
 const title = 'About Us';
-const description = `${business.name} rents trailers in ${business.homeCity}, CA and nearby cities. Locally owned, clean trailers, clear rates. Call or request a quote.`;
+const description = `${business.name} rents trailers in ${business.homeCity}, CA and nearby cities. Six trailer types, clear day and week rates, and a quick quote.`;
 
 const differentiators = [
   {
-    title: 'Locally owned',
-    text: `We live and work near ${business.homeCity}. You deal with us, not a call center.`,
+    title: 'Six trailer types',
+    text: 'Enclosed, flatbed, tilt, car, utility, and gooseneck. Pick the size your load needs.',
   },
   {
-    title: 'Trailers that are ready to go',
-    text: 'We check every trailer between rentals. Lights, tires, and straps.',
+    title: 'Clear rates',
+    text: 'Day and week prices are listed on every trailer page.',
   },
   {
     title: 'Straight answers',
@@ -31,14 +31,13 @@ const differentiators = [
         <h1 class="text-4xl font-extrabold text-navy">About {business.name}</h1>
         <!-- TODO: Replace this placeholder story with the real business story. -->
         <p class="mt-4 text-lg text-muted">
-          {business.name} is a locally owned trailer rental business in
-          {business.homeCity}, California. We rent trailers to people who need one for a
-          job but don’t want to buy and store one they’ll use a few times a year.
+          {business.name} rents trailers in {business.homeCity}, California. We rent to
+          people who need one for a job but don’t want to buy and store a trailer they’ll
+          use a few times a year.
         </p>
         <p class="mt-4 text-muted">
-          We keep a full set of trailers: enclosed, flatbed, tilt, car, utility, and
-          gooseneck. All clean and ready to tow. Moving, landscaping, hauling equipment,
-          or moving a car, we have a size that fits.
+          We rent six types: enclosed, flatbed, tilt, car, utility, and gooseneck.
+          Moving, landscaping, hauling equipment, or moving a car, we have a size that fits.
         </p>
 
         <h2 class="mt-10 text-2xl font-bold text-navy">Service area</h2>
