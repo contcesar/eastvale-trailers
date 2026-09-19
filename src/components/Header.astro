@@ -29,10 +29,17 @@ const navLinks = [
     class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3"
     aria-label="Main navigation"
   >
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2">
-      <!-- TODO: Replace this text logo with a real logo image. -->
-      <span class="text-xl font-extrabold tracking-tight text-navy">
+    <!-- Logo (falls back to the text wordmark if the image is missing) -->
+    <a href="/" class="flex items-center gap-2" aria-label={`${business.name} home`}>
+      <img
+        src="/images/eastvale-trailers-logo.png"
+        alt={business.name}
+        width="200"
+        height="48"
+        class="h-10 w-auto"
+        onerror="this.remove(); document.getElementById('logo-wordmark').classList.remove('hidden');"
+      />
+      <span id="logo-wordmark" class="hidden text-xl font-extrabold tracking-tight text-navy">
         Eastvale<span class="text-blue">Trailers</span>
       </span>
     </a>
