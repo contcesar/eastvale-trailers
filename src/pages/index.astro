@@ -5,6 +5,7 @@ import PhoneIcon from '../components/PhoneIcon.astro';
 import FeatureIcon from '../components/FeatureIcon.astro';
 import TrailerCard from '../components/TrailerCard.astro';
 import CTASection from '../components/CTASection.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
 import { business } from '../data/business.js';
 import { trailers } from '../data/trailers.js';
 import { cities } from '../data/cities.js';
@@ -73,6 +74,9 @@ const features = [
       </div>
     </div>
   </section>
+
+  <!-- 1b. Brand / certification marquee -->
+  <LogoMarquee />
 
   <!-- 2. Trailer types grid -->
   <section class="mx-auto max-w-6xl px-4 py-16">

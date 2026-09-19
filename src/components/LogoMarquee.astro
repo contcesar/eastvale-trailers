@@ -1,0 +1,107 @@
+---
+// Gently looping logo/certification marquee.
+// The logo set is rendered twice; the track scrolls by exactly one copy
+// (-50%) for a seamless, infinite loop. Each group carries its own
+// trailing gap (padding-right) so the wrap point lines up perfectly.
+const logos = [
+  { src: '/images/logos/bigtex.webp', alt: 'Big Tex Trailers' },
+  { src: '/images/logos/natm.webp', alt: 'National Association of Trailer Manufacturers' },
+  { src: '/images/logos/husky.webp', alt: 'Husky Towing Products' },
+  { src: '/images/logos/made-in-usa.webp', alt: 'Made in USA' },
+  { src: '/images/logos/interstate.webp', alt: 'Interstate' },
+];
+---
+
+<section class="border-y border-border bg-surface" aria-label="Brands and certifications we work with">
+  <div class="marquee py-8">
+    <div class="marquee__track">
+      {[0, 1].map((copy) => (
+        <ul class="marquee__group" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {logos.map((logo) => (
+            <li class="shrink-0">
+              <img
+                src={logo.src}
+                alt={copy === 1 ? '' : logo.alt}
+                loading="lazy"
+                decoding="async"
+                class="h-10 w-auto opacity-80 transition-opacity duration-200 hover:opacity-100 sm:h-12"
+              />
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee {
+    --gap: 3.5rem;
+    --duration: 38s;
+    overflow: hidden;
+    /* Soft fade at both edges. */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll var(--duration) linear infinite;
+  }
+
+  .marquee__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--gap);
+    /* Trailing gap so the two groups tile seamlessly. */
+    padding-right: var(--gap);
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Gentle: slow down and hold on hover. */
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+
+  /* Respect users who prefer less motion: no scrolling, wrap logos instead. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+    .marquee__track {
+      animation: none;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .marquee__group:nth-child(2) {
+      display: none;
+    }
+    .marquee__group {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem 3rem;
+      padding-right: 0;
+    }
+  }
+</style>
