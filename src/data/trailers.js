@@ -1,9 +1,12 @@
 // Trailer types. Pages and cards are generated from this list, so add or
 // edit a trailer here and it flows through the whole site.
 //
+// Rates below are current advertised rental rates, shown as a guide; final
+// pricing depends on availability and rental length. Update the `rates` arrays
+// and `starterRate` values here to change what appears on the site.
+//
 // TODO: Add a real photo for each trailer at the `image` path below
 //       (place files in /public/images/trailers/).
-// TODO: Replace the `starterRate` placeholders with real pricing.
 export const trailers = [
   {
     slug: 'enclosed',
@@ -18,7 +21,15 @@ export const trailers = [
       'Transporting motorcycles or ATVs under cover',
       'Trade shows, deliveries, and mobile storage',
     ],
-    starterRate: '$XX/day', // TODO: real rate
+    starterRate: 'From $120/day',
+    rates: [
+      { size: '16 ft', daily: '$120', weekly: '$600' },
+      { size: '18 ft', daily: '$130', weekly: '$650' },
+      { size: '20 ft', daily: '$140', weekly: '$700' },
+      { size: '24 ft', daily: '$165', weekly: '$825' },
+      { size: '28 ft', daily: '$220', weekly: '$1,100' },
+      { size: '34 ft (2-car hauler)', daily: '$275', weekly: '$1,650' },
+    ],
   },
   {
     slug: 'flatbed',
@@ -33,7 +44,13 @@ export const trailers = [
       'Landscaping and construction hauls',
       'Equipment that needs top or side loading',
     ],
-    starterRate: '$XX/day', // TODO: real rate
+    starterRate: 'From $140/day',
+    rates: [
+      { size: '20 ft', daily: '$140', weekly: '$700' },
+      { size: '22 ft', daily: '$150', weekly: '$750' },
+      { size: '24 ft', daily: '$175', weekly: '$875' },
+      { size: '26 ft', daily: '$185', weekly: '$925' },
+    ],
   },
   {
     slug: 'tilt',
@@ -48,7 +65,13 @@ export const trailers = [
       'Loads that are awkward to ramp',
       'Solo loading jobs',
     ],
-    starterRate: '$XX/day', // TODO: real rate
+    starterRate: 'From $140/day',
+    rates: [
+      { size: '20 ft', daily: '$140', weekly: '$700' },
+      { size: '22 ft', daily: '$150', weekly: '$750' },
+      { size: '24 ft', daily: '$175', weekly: '$875' },
+      { size: '26 ft', daily: '$185', weekly: '$925' },
+    ],
   },
   {
     slug: 'car',
@@ -63,7 +86,14 @@ export const trailers = [
       'Track days and car shows',
       'Dealer and private-party pickups',
     ],
-    starterRate: '$XX/day', // TODO: real rate
+    starterRate: 'From $100/day',
+    rates: [
+      { size: '18 ft', daily: '$100', weekly: '$600' },
+      { size: '20 ft', daily: '$110', weekly: '$660' },
+      { size: '22 ft', daily: '$120', weekly: '$720' },
+      { size: '32 ft (2-car)', daily: '$150', weekly: '$900' },
+      { size: '34 ft (2-car)', daily: '$175', weekly: '$1,050' },
+    ],
   },
   {
     slug: 'utility',
@@ -78,7 +108,8 @@ export const trailers = [
       'Hauling mulch, gravel, and soil',
       'Appliances and general gear',
     ],
-    starterRate: '$XX/day', // TODO: real rate
+    starterRate: 'From $110/day',
+    rates: [{ size: 'Standard utility', daily: '$110', weekly: '$500' }],
   },
   {
     slug: 'gooseneck',
@@ -93,7 +124,11 @@ export const trailers = [
       'Multi-vehicle transport',
       'Commercial hauling jobs',
     ],
-    starterRate: '$XX/day', // TODO: real rate
+    starterRate: 'From $185/day',
+    rates: [
+      { size: '30 ft', daily: '$185', weekly: '$925' },
+      { size: '40 ft', daily: '$225', weekly: '$1,350' },
+    ],
   },
 ];
 

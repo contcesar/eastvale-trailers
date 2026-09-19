@@ -28,6 +28,9 @@ const description = `${trailer.blurb} Rent a ${trailer.name.toLowerCase().replac
     <div class="mt-4 grid gap-10 lg:grid-cols-2">
       <div>
         <h1 class="text-4xl font-extrabold text-navy">{trailer.name}</h1>
+        <p class="mt-2 inline-block rounded-full bg-orange/10 px-3 py-1 text-sm font-bold text-orange">
+          {trailer.starterRate}
+        </p>
         <p class="mt-4 text-lg text-muted">{trailer.description}</p>
 
         <h2 class="mt-8 text-xl font-bold text-navy">Common uses</h2>
@@ -42,36 +45,34 @@ const description = `${trailer.blurb} Rent a ${trailer.name.toLowerCase().replac
           }
         </ul>
 
-        <!-- Rates placeholder table. TODO: fill in real rates. -->
+        <!-- Rates table, driven by the rates data in src/data/trailers.js -->
         <h2 class="mt-8 text-xl font-bold text-navy">Rates</h2>
         <div class="mt-3 overflow-hidden rounded-[14px] border border-border">
           <table class="w-full text-left text-sm">
             <thead class="bg-page text-navy">
               <tr>
-                <th class="px-4 py-3 font-semibold">Rental period</th>
-                <th class="px-4 py-3 font-semibold">Rate</th>
+                <th class="px-4 py-3 font-semibold">Size</th>
+                <th class="px-4 py-3 font-semibold">Per day</th>
+                <th class="px-4 py-3 font-semibold">Per week</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-border text-muted">
-              <tr>
-                <td class="px-4 py-3">Half day</td>
-                <td class="px-4 py-3">$XX <span class="text-xs">(TODO)</span></td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3">Full day</td>
-                <td class="px-4 py-3">{trailer.starterRate} <span class="text-xs">(TODO)</span></td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3">Weekend</td>
-                <td class="px-4 py-3">$XX <span class="text-xs">(TODO)</span></td>
-              </tr>
-              <tr>
-                <td class="px-4 py-3">Weekly</td>
-                <td class="px-4 py-3">$XX <span class="text-xs">(TODO)</span></td>
-              </tr>
+              {
+                trailer.rates.map((rate) => (
+                  <tr>
+                    <td class="px-4 py-3 font-medium text-navy">{rate.size}</td>
+                    <td class="px-4 py-3">{rate.daily}</td>
+                    <td class="px-4 py-3">{rate.weekly}</td>
+                  </tr>
+                ))
+              }
             </tbody>
           </table>
         </div>
+        <p class="mt-2 text-xs text-muted">
+          Rates are a guide and depend on availability and rental length. Taxes, deposit,
+          and delivery are not included. Call to confirm current pricing.
+        </p>
 
         <p class="mt-6 text-muted">
           Available for pickup across
