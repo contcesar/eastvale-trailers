@@ -1,9 +1,8 @@
 // Central business info. Update these placeholders with real details.
 export const business = {
   name: 'Eastvale Trailers',
-  // TODO: Replace with the real phone number. Used everywhere as a tel: link.
-  phone: '(951) 555-0123',
-  phoneHref: 'tel:+19515550123',
+  phone: '(951) 474-5496',
+  phoneHref: 'tel:+19514745496',
   tagline: 'Trailer rentals in Eastvale and nearby cities.',
   // TODO: Confirm real business hours.
   hours: [
