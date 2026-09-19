@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import PhoneIcon from '../components/PhoneIcon.astro';
+import FeatureIcon from '../components/FeatureIcon.astro';
 import TrailerCard from '../components/TrailerCard.astro';
 import CTASection from '../components/CTASection.astro';
 import { business } from '../data/business.js';
@@ -12,22 +13,27 @@ const title = 'Trailer Rentals in Eastvale, CA';
 const description =
   'Rent enclosed, flatbed, tilt, car, utility, and gooseneck trailers in Eastvale, CA. Day and week rates, with pickup for Corona, Norco, Chino, and nearby cities.';
 
-const trustPoints = [
+const features = [
   {
-    title: 'Trailers for any job',
-    text: 'Six types, from utility trailers to goosenecks. Pick the size your load needs.',
+    icon: 'truck',
+    title: 'Delivery & pickup',
+    // TODO: Confirm whether you deliver and what the fees are.
+    text: 'We can deliver and pick up at your home or job site. Ask about fees when you call.',
   },
   {
-    title: 'Local pickup',
-    text: `Pick up in ${business.homeCity}, close to the cities we serve.`,
-  },
-  {
+    icon: 'tag',
     title: 'Clear rates',
-    text: 'See day and week prices up front. Ask about multi-day rates.',
+    text: 'Day and week prices are listed on every trailer page. No surprises.',
   },
   {
-    title: 'Quick booking',
-    text: 'Call or send a quote request and we’ll get you booked.',
+    icon: 'pin',
+    title: 'Local pickup',
+    text: `Pick up in ${business.homeCity}, close to Corona, Norco, Chino, and more.`,
+  },
+  {
+    icon: 'grid',
+    title: 'Six trailer types',
+    text: 'From utility trailers to goosenecks. Pick the size your load needs.',
   },
 ];
 ---
@@ -86,13 +92,20 @@ const trustPoints = [
   <!-- 3. Why rent from us -->
   <section class="bg-surface">
     <div class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-center text-3xl font-extrabold text-navy">Why rent from us</h2>
-      <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <h2 class="text-3xl font-extrabold text-navy sm:text-4xl">Why Rent From Us?</h2>
+      <p class="mt-4 max-w-3xl text-muted">
+        Renting a trailer should be quick and clear. Reserve the size you need, pick it up
+        in {business.homeCity}, and get to work. Here’s what you get when you rent with us.
+      </p>
+      <div class="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
         {
-          trustPoints.map((point) => (
-            <div class="rounded-[14px] border border-border bg-page p-6">
-              <h3 class="text-lg font-bold text-blue">{point.title}</h3>
-              <p class="mt-2 text-sm text-muted">{point.text}</p>
+          features.map((f) => (
+            <div class="text-center">
+              <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue/10 text-blue">
+                <FeatureIcon name={f.icon} class="h-7 w-7" />
+              </div>
+              <h3 class="mt-4 text-lg font-bold text-navy">{f.title}</h3>
+              <p class="mx-auto mt-2 max-w-xs text-sm text-muted">{f.text}</p>
             </div>
           ))
         }
