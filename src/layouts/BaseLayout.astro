@@ -24,10 +24,8 @@ const jsonLd = {
   url: business.url,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: business.address.street,
-    addressLocality: business.address.city,
-    addressRegion: business.address.state,
-    postalCode: business.address.zip,
+    addressLocality: business.homeCity,
+    addressRegion: business.region,
     addressCountry: 'US',
   },
   areaServed: schemaCity

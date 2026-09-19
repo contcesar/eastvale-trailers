@@ -1,10 +1,11 @@
 ---
 import { business } from '../data/business.js';
 import Button from './Button.astro';
+import PhoneIcon from './PhoneIcon.astro';
 
 const {
-  heading = 'Ready to haul? Reserve your trailer today.',
-  text = 'Call now or request a quote and we’ll get you set up fast.',
+  heading = 'Ready to book a trailer?',
+  text = 'Call us or send a quote request. We’ll get you the right trailer for the job.',
 } = Astro.props;
 ---
 
@@ -14,7 +15,7 @@ const {
     <p class="mx-auto mt-3 max-w-2xl text-white/85">{text}</p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <Button href={business.phoneHref} variant="primary">
-        <span aria-hidden="true">📞</span> Call {business.phone}
+        <PhoneIcon class="h-5 w-5" /> Call {business.phone}
       </Button>
       <a
         href="/contact"

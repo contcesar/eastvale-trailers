@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import PhoneIcon from '../components/PhoneIcon.astro';
 import { business } from '../data/business.js';
 
 const title = 'Thank You';
-const description = 'Thanks for your trailer rental quote request. We’ll get back to you shortly.';
+const description = 'Thanks for your trailer rental quote request. We’ll get back to you soon. Need a trailer today? Call us.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -14,12 +15,11 @@ const description = 'Thanks for your trailer rental quote request. We’ll get b
     </div>
     <h1 class="mt-6 text-4xl font-extrabold text-navy">Thank you!</h1>
     <p class="mx-auto mt-4 max-w-xl text-lg text-muted">
-      We’ve received your quote request and will get back to you shortly. Need an answer
-      right now? Give us a call and we’ll help you out.
+      We got your request and we’ll get back to you soon. Need an answer now? Give us a call.
     </p>
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <Button href={business.phoneHref} variant="primary">
-        <span aria-hidden="true">📞</span> Call {business.phone}
+        <PhoneIcon class="h-5 w-5" /> Call {business.phone}
       </Button>
       <Button href="/" variant="secondary">Back to Home</Button>
     </div>

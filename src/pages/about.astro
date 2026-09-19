@@ -1,24 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import PhoneIcon from '../components/PhoneIcon.astro';
 import CTASection from '../components/CTASection.astro';
 import { business } from '../data/business.js';
 
 const title = 'About Us';
-const description = `Learn about ${business.name}, a locally owned trailer rental business based in ${business.homeCity}, CA, serving the surrounding cities with well-maintained trailers.`;
+const description = `${business.name} rents trailers in ${business.homeCity}, CA and nearby cities. Locally owned, clean trailers, clear rates. Call or request a quote.`;
 
 const differentiators = [
   {
     title: 'Locally owned',
-    text: `We live and work in the ${business.homeCity} area, and we treat every customer like a neighbor.`,
+    text: `We live and work near ${business.homeCity}. You deal with us, not a call center.`,
   },
   {
-    title: 'Clean, road-ready trailers',
-    text: 'Every trailer is inspected between rentals so you get equipment you can trust.',
+    title: 'Trailers that are ready to go',
+    text: 'We check every trailer between rentals. Lights, tires, and straps.',
   },
   {
-    title: 'Honest advice',
-    text: 'Not sure what you need? We’ll help you pick the right trailer for the job — no upselling.',
+    title: 'Straight answers',
+    text: 'Not sure what you need? We’ll help you pick the right size. No upselling.',
   },
 ];
 ---
@@ -30,16 +31,14 @@ const differentiators = [
         <h1 class="text-4xl font-extrabold text-navy">About {business.name}</h1>
         <!-- TODO: Replace this placeholder story with the real business story. -->
         <p class="mt-4 text-lg text-muted">
-          {business.name} is a locally owned trailer rental business based in
-          {business.homeCity}, California. We started with a simple idea: give local
-          homeowners, contractors, and businesses an easy, affordable way to haul what
-          they need without buying a trailer they’d only use a few times a year.
+          {business.name} is a locally owned trailer rental business in
+          {business.homeCity}, California. We rent trailers to people who need one for a
+          job but don’t want to buy and store one they’ll use a few times a year.
         </p>
         <p class="mt-4 text-muted">
-          Today we rent a full lineup of enclosed, flatbed, tilt, car, utility, and
-          gooseneck trailers, all kept clean and road-ready. Whether you’re moving,
-          landscaping, hauling equipment, or transporting a vehicle, we’ve got a trailer
-          that fits.
+          We keep a full set of trailers: enclosed, flatbed, tilt, car, utility, and
+          gooseneck. All clean and ready to tow. Moving, landscaping, hauling equipment,
+          or moving a car, we have a size that fits.
         </p>
 
         <h2 class="mt-10 text-2xl font-bold text-navy">Service area</h2>
@@ -56,7 +55,7 @@ const differentiators = [
 
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button href={business.phoneHref} variant="primary">
-            <span aria-hidden="true">📞</span> Call {business.phone}
+            <PhoneIcon class="h-5 w-5" /> Call {business.phone}
           </Button>
           <Button href="/contact" variant="secondary">Request a Quote</Button>
         </div>

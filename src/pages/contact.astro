@@ -4,14 +4,14 @@ import QuoteForm from '../components/QuoteForm.astro';
 import { business } from '../data/business.js';
 
 const title = 'Contact & Quote Request';
-const description = `Contact ${business.name} in ${business.homeCity}, CA. Call ${business.phone} or request a trailer rental quote online.`;
+const description = `Call ${business.name} at ${business.phone} or request a trailer rental quote online. Based in ${business.homeCity}, CA, serving nearby cities.`;
 ---
 
 <BaseLayout title={title} description={description}>
   <section class="mx-auto max-w-6xl px-4 py-16">
     <h1 class="text-4xl font-extrabold text-navy">Contact & Quote Request</h1>
     <p class="mt-3 max-w-2xl text-muted">
-      Call us or fill out the form and we’ll get back to you quickly with availability and pricing.
+      Call us or send the form. We’ll get back to you with what’s available and what it costs.
     </p>
 
     <div class="mt-10 grid gap-10 lg:grid-cols-2">
@@ -25,13 +25,6 @@ const description = `Contact ${business.name} in ${business.homeCity}, CA. Call 
           >
             {business.phone}
           </a>
-
-          <h2 class="mt-6 text-xl font-bold text-navy">Visit / pickup</h2>
-          <address class="mt-1 not-italic text-muted">
-            <!-- TODO: Replace with the real address. -->
-            {business.address.street}<br />
-            {business.address.city}, {business.address.state} {business.address.zip}
-          </address>
 
           <h2 class="mt-6 text-xl font-bold text-navy">Hours</h2>
           <ul class="mt-1 text-muted">
@@ -54,7 +47,7 @@ const description = `Contact ${business.name} in ${business.homeCity}, CA. Call 
       <!-- Quote form -->
       <div>
         <h2 class="text-2xl font-extrabold text-navy">Request a Quote</h2>
-        <p class="mt-2 text-muted">All fields marked required help us respond faster.</p>
+        <p class="mt-2 text-muted">Fill in the details and we’ll get back to you fast.</p>
         <div class="mt-4">
           <QuoteForm />
         </div>

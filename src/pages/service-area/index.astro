@@ -6,19 +6,18 @@ import { business } from '../../data/business.js';
 import { cities } from '../../data/cities.js';
 
 const title = 'Service Area';
-const description = `Eastvale Trailers rents trailers across ${business.homeCity} and nearby cities including Corona, Norco, Jurupa Valley, Chino, Chino Hills, Ontario, and Riverside.`;
+const description = `We rent trailers in ${business.homeCity} and nearby cities: Corona, Norco, Jurupa Valley, Chino, Chino Hills, Ontario, and Riverside. Pickup from our Eastvale lot.`;
 ---
 
 <BaseLayout title={title} description={description}>
   <section class="mx-auto max-w-6xl px-4 py-16">
     <h1 class="text-4xl font-extrabold text-navy">Our Service Area</h1>
     <div class="mt-6 rounded-[16px] border border-border bg-surface p-6 shadow-[var(--shadow-card)]">
-      <h2 class="text-2xl font-bold text-blue">{business.homeCity} — our home base</h2>
+      <h2 class="text-2xl font-bold text-blue">{business.homeCity} is our home base</h2>
       <p class="mt-2 max-w-3xl text-muted">
-        {business.name} is based in {business.homeCity}, California. That is where you
-        pick up your trailer, and it puts us a short tow from the surrounding cities we
-        serve. If you are nearby and don’t see your city listed, give us a call — we may
-        still be able to help.
+        {business.name} is based in {business.homeCity}, California. That’s where you pick
+        up your trailer, and it keeps us close to the cities around us. Don’t see your
+        city? Call us. We may still be able to help.
       </p>
     </div>
 
@@ -29,6 +28,6 @@ const description = `Eastvale Trailers rents trailers across ${business.homeCity
   </section>
 
   <div class="pb-16">
-    <CTASection heading="Serving your area" text="Call now or request a quote and we’ll set you up with the right trailer." />
+    <CTASection heading="Trailers for your area" text="Call or request a quote and we’ll line up the right trailer." />
   </div>
 </BaseLayout>

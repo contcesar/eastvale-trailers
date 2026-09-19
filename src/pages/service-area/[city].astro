@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
+import PhoneIcon from '../../components/PhoneIcon.astro';
 import TrailerCard from '../../components/TrailerCard.astro';
 import QuoteForm from '../../components/QuoteForm.astro';
 import { cities } from '../../data/cities.js';
@@ -16,7 +17,7 @@ export function getStaticPaths() {
 
 const { city } = Astro.props;
 const title = `Trailer Rentals in ${city.name}, CA`;
-const description = `Rent enclosed, flatbed, tilt, car, utility, and gooseneck trailers in ${city.name}, CA. ${business.name} delivers dependable trailers to the ${city.name} area.`;
+const description = `Rent enclosed, flatbed, tilt, car, utility, and gooseneck trailers in ${city.name}, CA. Pickup from our Eastvale lot. Call for a quote.`;
 ---
 
 <BaseLayout title={title} description={description} schemaCity={city.name}>
@@ -34,7 +35,7 @@ const description = `Rent enclosed, flatbed, tilt, car, utility, and gooseneck t
 
     <div class="mt-6 flex flex-col gap-3 sm:flex-row">
       <Button href={business.phoneHref} variant="primary">
-        <span aria-hidden="true">📞</span> Call {business.phone}
+        <PhoneIcon class="h-5 w-5" /> Call {business.phone}
       </Button>
       <Button href="/contact" variant="secondary">Request a Quote</Button>
     </div>
@@ -51,8 +52,8 @@ const description = `Rent enclosed, flatbed, tilt, car, utility, and gooseneck t
     <div class="mt-12 rounded-[14px] border border-border bg-surface p-6 shadow-[var(--shadow-card)]">
       <h2 class="text-xl font-bold text-navy">Delivery & pickup for {city.name}</h2>
       <p class="mt-2 text-muted">
-        {city.name} is a short tow from our {business.homeCity} base, so pickup is quick and
-        convenient. Ask about delivery options for larger jobs when you call or request a quote.
+        {city.name} is a short tow from our {business.homeCity} lot, so pickup is quick.
+        Hauling something big? Ask about delivery when you call.
       </p>
     </div>
 
@@ -72,7 +73,7 @@ const description = `Rent enclosed, flatbed, tilt, car, utility, and gooseneck t
       <div>
         <h2 class="text-2xl font-extrabold text-navy">Request a Quote in {city.name}</h2>
         <p class="mt-2 text-muted">
-          Tell us what you need to haul and your dates. We’ll get right back to you.
+          Tell us what you’re hauling and your dates. We’ll get back to you fast.
         </p>
       </div>
       <QuoteForm />

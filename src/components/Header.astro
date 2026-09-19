@@ -1,5 +1,6 @@
 ---
 import { business } from '../data/business.js';
+import PhoneIcon from './PhoneIcon.astro';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -15,9 +16,9 @@ const navLinks = [
   <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-1 px-4 py-2 text-center sm:flex-row sm:text-left">
     <a
       href={business.phoneHref}
-      class="text-lg font-bold tracking-tight text-white hover:text-orange sm:text-xl"
+      class="inline-flex items-center gap-2 text-lg font-bold tracking-tight text-white hover:text-orange sm:text-xl"
     >
-      📞 {business.phone}
+      <PhoneIcon class="h-5 w-5" /> {business.phone}
     </a>
     <p class="text-sm text-white/90">{business.tagline}</p>
   </div>
@@ -66,7 +67,7 @@ const navLinks = [
         href={business.phoneHref}
         class="inline-flex items-center gap-2 rounded-full bg-orange px-4 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:bg-orange-hover"
       >
-        <span aria-hidden="true">📞</span>
+        <PhoneIcon class="h-5 w-5" />
         <span class="hidden sm:inline">Call {business.phone}</span>
         <span class="sm:hidden">Call</span>
       </a>
@@ -114,7 +115,7 @@ const navLinks = [
           href={business.phoneHref}
           class="flex items-center justify-center gap-2 rounded-full bg-orange px-4 py-3 text-base font-bold text-white hover:bg-orange-hover"
         >
-          <span aria-hidden="true">📞</span> Call {business.phone}
+          <PhoneIcon class="h-5 w-5" /> Call {business.phone}
         </a>
       </li>
     </ul>
