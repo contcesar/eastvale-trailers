@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import CTASection from '../components/CTASection.astro';
+import { business } from '../data/business.js';
+
+const title = 'About Us';
+const description = `Learn about ${business.name}, a locally owned trailer rental business based in ${business.homeCity}, CA, serving the surrounding cities with well-maintained trailers.`;
+
+const differentiators = [
+  {
+    title: 'Locally owned',
+    text: `We live and work in the ${business.homeCity} area, and we treat every customer like a neighbor.`,
+  },
+  {
+    title: 'Clean, road-ready trailers',
+    text: 'Every trailer is inspected between rentals so you get equipment you can trust.',
+  },
+  {
+    title: 'Honest advice',
+    text: 'Not sure what you need? We’ll help you pick the right trailer for the job — no upselling.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div>
+        <h1 class="text-4xl font-extrabold text-navy">About {business.name}</h1>
+        <!-- TODO: Replace this placeholder story with the real business story. -->
+        <p class="mt-4 text-lg text-muted">
+          {business.name} is a locally owned trailer rental business based in
+          {business.homeCity}, California. We started with a simple idea: give local
+          homeowners, contractors, and businesses an easy, affordable way to haul what
+          they need without buying a trailer they’d only use a few times a year.
+        </p>
+        <p class="mt-4 text-muted">
+          Today we rent a full lineup of enclosed, flatbed, tilt, car, utility, and
+          gooseneck trailers, all kept clean and road-ready. Whether you’re moving,
+          landscaping, hauling equipment, or transporting a vehicle, we’ve got a trailer
+          that fits.
+        </p>
+
+        <h2 class="mt-10 text-2xl font-bold text-navy">Service area</h2>
+        <p class="mt-2 text-muted">
+          We serve {business.homeCity} plus Corona, Norco, Jurupa Valley, Chino,
+          Chino Hills, Ontario, and Riverside.
+          <a href="/service-area" class="font-semibold text-blue hover:text-blue-hover">See our full service area</a>.
+        </p>
+
+        <h2 class="mt-10 text-2xl font-bold text-navy">Hours</h2>
+        <ul class="mt-2 text-muted">
+          {business.hours.map((h) => <li>{h.days}: {h.time}</li>)}
+        </ul>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href={business.phoneHref} variant="primary">
+            <span aria-hidden="true">📞</span> Call {business.phone}
+          </Button>
+          <Button href="/contact" variant="secondary">Request a Quote</Button>
+        </div>
+      </div>
+
+      <div>
+        <!-- Photo slot. TODO: add a real photo of the business / trailers. -->
+        <div
+          class="flex aspect-[4/3] items-center justify-center rounded-[16px] border border-border bg-surface text-muted shadow-[var(--shadow-card)]"
+        >
+          <span class="px-6 text-center text-sm">Business photo coming soon</span>
+        </div>
+
+        <h2 class="mt-10 text-2xl font-bold text-navy">What sets us apart</h2>
+        <div class="mt-4 space-y-4">
+          {
+            differentiators.map((d) => (
+              <div class="rounded-[14px] border border-border bg-surface p-5 shadow-[var(--shadow-card)]">
+                <h3 class="text-lg font-bold text-blue">{d.title}</h3>
+                <p class="mt-1 text-sm text-muted">{d.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pb-16">
+    <CTASection />
+  </div>
+</BaseLayout>

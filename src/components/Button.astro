@@ -1,0 +1,26 @@
+---
+// Button / link component.
+// variant: "primary" (orange, for CTAs + phone) or "secondary" (blue outline).
+const {
+  href = '#',
+  variant = 'primary',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors duration-150 focus-visible:outline-none';
+
+const variants = {
+  primary:
+    'bg-orange text-white hover:bg-orange-hover shadow-sm',
+  secondary:
+    'border-2 border-blue text-blue bg-transparent hover:bg-blue hover:text-white',
+};
+
+const classes = `${base} ${variants[variant] ?? variants.primary} ${className}`;
+---
+
+<a href={href} class={classes} {...rest}>
+  <slot />
+</a>

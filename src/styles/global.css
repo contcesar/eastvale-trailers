@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Design tokens (Tailwind v4 uses the CSS-first @theme block).        */
+/* These generate utilities like bg-page, text-navy, border-border,    */
+/* bg-orange, text-blue, etc.                                          */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Colors */
+  --color-page: #F6F8FB;
+  --color-surface: #FFFFFF;
+  --color-border: #E3E7EC;
+  --color-navy: #0F2A47;
+  --color-muted: #5B6B80;
+  --color-blue: #1D5DB8;
+  --color-blue-hover: #164A94;
+  --color-orange: #F26722;
+  --color-orange-hover: #D9561A;
+
+  /* Typography: Inter with a safe system fallback stack. */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Rounded corners: 12–16px cards. */
+  --radius-card: 14px;
+
+  /* Soft shadows. */
+  --shadow-card: 0 1px 2px rgba(15, 42, 71, 0.04),
+    0 4px 16px rgba(15, 42, 71, 0.06);
+  --shadow-card-hover: 0 2px 4px rgba(15, 42, 71, 0.06),
+    0 10px 28px rgba(15, 42, 71, 0.10);
+}
+
+/* Base element defaults. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem; /* keep anchors clear of the sticky header */
+}
+
+body {
+  background-color: var(--color-page);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible focus states for keyboard users. */
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

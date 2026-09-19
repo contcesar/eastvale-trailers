@@ -1,0 +1,52 @@
+---
+// Card for a single trailer type. Driven by the trailers data file.
+const { trailer, loading = 'lazy' } = Astro.props;
+const href = `/trailers/${trailer.slug}`;
+---
+
+<article
+  class="group flex flex-col overflow-hidden rounded-[14px] border border-border bg-surface shadow-[var(--shadow-card)] transition-shadow duration-150 hover:shadow-[var(--shadow-card-hover)]"
+>
+  <a href={href} class="block" aria-label={trailer.name}>
+    <!-- Image placeholder. TODO: add real photos to /public/images/trailers/ -->
+    <div class="aspect-[4/3] w-full overflow-hidden bg-page">
+      <img
+        src={trailer.image}
+        alt={`${trailer.name} available for rent`}
+        loading={loading}
+        decoding="async"
+        width="400"
+        height="300"
+        class="h-full w-full object-cover"
+        onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback');"
+      />
+    </div>
+  </a>
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="text-lg font-bold text-blue">
+      <a href={href} class="hover:text-blue-hover">{trailer.name}</a>
+    </h3>
+    <p class="mt-2 flex-1 text-sm text-muted">{trailer.blurb}</p>
+    <a
+      href={href}
+      class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue hover:text-blue-hover"
+    >
+      View details
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  /* Simple placeholder look when a photo has not been added yet. */
+  .img-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-fallback::after {
+    content: 'Photo coming soon';
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+</style>

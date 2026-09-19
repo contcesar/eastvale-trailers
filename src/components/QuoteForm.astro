@@ -1,0 +1,136 @@
+---
+import { trailers } from '../data/trailers.js';
+import { cities } from '../data/cities.js';
+import { business } from '../data/business.js';
+
+// Optional: preselect a trailer type (used on trailer type pages).
+const { selectedTrailer = '' } = Astro.props;
+const formName = 'quote-request';
+---
+
+<!--
+  Netlify Forms:
+  - data-netlify="true" tells Netlify to capture submissions.
+  - The hidden "form-name" input must match the visible form's name.
+  - netlify-honeypot names the spam-trap field (hidden from real users).
+  - action="/thank-you" redirects on success.
+  The markup is present at build time so Netlify can detect the form.
+-->
+<form
+  name={formName}
+  method="POST"
+  action="/thank-you"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="rounded-[14px] border border-border bg-surface p-6 shadow-[var(--shadow-card)]"
+>
+  <input type="hidden" name="form-name" value={formName} />
+
+  <!-- Honeypot field: hidden from people, catches bots. -->
+  <p class="hidden">
+    <label>
+      Don’t fill this out if you’re human: <input name="bot-field" />
+    </label>
+  </p>
+
+  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+    <div>
+      <label for="qf-name" class="block text-sm font-semibold text-navy">Name</label>
+      <input
+        id="qf-name"
+        name="name"
+        type="text"
+        required
+        autocomplete="name"
+        class="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-navy placeholder:text-muted focus:border-blue focus-visible:outline-none"
+        placeholder="Your name"
+      />
+    </div>
+
+    <div>
+      <label for="qf-phone" class="block text-sm font-semibold text-navy">Phone</label>
+      <input
+        id="qf-phone"
+        name="phone"
+        type="tel"
+        required
+        autocomplete="tel"
+        class="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-navy placeholder:text-muted focus:border-blue focus-visible:outline-none"
+        placeholder="(555) 555-5555"
+      />
+    </div>
+
+    <div>
+      <label for="qf-email" class="block text-sm font-semibold text-navy">Email</label>
+      <input
+        id="qf-email"
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        class="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-navy placeholder:text-muted focus:border-blue focus-visible:outline-none"
+        placeholder="you@example.com"
+      />
+    </div>
+
+    <div>
+      <label for="qf-trailer" class="block text-sm font-semibold text-navy">Trailer type</label>
+      <select
+        id="qf-trailer"
+        name="trailer-type"
+        class="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-navy focus:border-blue focus-visible:outline-none"
+      >
+        <option value="">Select a trailer</option>
+        {
+          trailers.map((t) => (
+            <option value={t.name} selected={t.slug === selectedTrailer}>
+              {t.name}
+            </option>
+          ))
+        }
+      </select>
+    </div>
+
+    <div>
+      <label for="qf-dates" class="block text-sm font-semibold text-navy">Rental dates</label>
+      <input
+        id="qf-dates"
+        name="rental-dates"
+        type="text"
+        class="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-navy placeholder:text-muted focus:border-blue focus-visible:outline-none"
+        placeholder="e.g. Oct 3 – Oct 5"
+      />
+    </div>
+
+    <div>
+      <label for="qf-city" class="block text-sm font-semibold text-navy">City</label>
+      <select
+        id="qf-city"
+        name="city"
+        class="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-navy focus:border-blue focus-visible:outline-none"
+      >
+        <option value="">Select a city</option>
+        <option value={business.homeCity}>{business.homeCity}</option>
+        {cities.map((c) => <option value={c.name}>{c.name}</option>)}
+      </select>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <label for="qf-message" class="block text-sm font-semibold text-navy">Message</label>
+    <textarea
+      id="qf-message"
+      name="message"
+      rows="4"
+      class="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-navy placeholder:text-muted focus:border-blue focus-visible:outline-none"
+      placeholder="Tell us what you need to haul and any questions you have."
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-orange px-6 py-3 text-base font-bold text-white transition-colors hover:bg-orange-hover sm:w-auto"
+  >
+    Request a Quote
+  </button>
+</form>

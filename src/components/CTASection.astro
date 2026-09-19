@@ -1,0 +1,27 @@
+---
+import { business } from '../data/business.js';
+import Button from './Button.astro';
+
+const {
+  heading = 'Ready to haul? Reserve your trailer today.',
+  text = 'Call now or request a quote and we’ll get you set up fast.',
+} = Astro.props;
+---
+
+<section class="mx-auto max-w-6xl px-4">
+  <div class="rounded-[16px] bg-navy px-6 py-12 text-center sm:px-12">
+    <h2 class="text-2xl font-extrabold text-white sm:text-3xl">{heading}</h2>
+    <p class="mx-auto mt-3 max-w-2xl text-white/85">{text}</p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <Button href={business.phoneHref} variant="primary">
+        <span aria-hidden="true">📞</span> Call {business.phone}
+      </Button>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white hover:text-navy"
+      >
+        Request a Quote
+      </a>
+    </div>
+  </div>
+</section>

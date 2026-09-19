@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrailerCard from '../../components/TrailerCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { trailers } from '../../data/trailers.js';
+
+const title = 'Trailer Types & Rentals';
+const description =
+  'Browse all trailer rentals from Eastvale Trailers: enclosed, flatbed, tilt, car, utility, and gooseneck trailers available for pickup across the Eastvale area.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold text-navy">Our Trailer Rentals</h1>
+      <p class="mx-auto mt-3 max-w-2xl text-muted">
+        Six trailer types to cover almost any hauling job. Choose one to see details,
+        common uses, and rates.
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {trailers.map((trailer, i) => <TrailerCard trailer={trailer} loading={i < 3 ? 'eager' : 'lazy'} />)}
+    </div>
+  </section>
+
+  <div class="pb-16">
+    <CTASection heading="Not sure which trailer you need?" text="Call us and we’ll help you pick the right one for the job." />
+  </div>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { business } from '../data/business.js';
+
+const title = 'Thank You';
+const description = 'Thanks for your trailer rental quote request. We’ll get back to you shortly.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="mx-auto max-w-3xl px-4 py-24 text-center">
+    <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue/10 text-3xl text-blue" aria-hidden="true">
+      &#10003;
+    </div>
+    <h1 class="mt-6 text-4xl font-extrabold text-navy">Thank you!</h1>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-muted">
+      We’ve received your quote request and will get back to you shortly. Need an answer
+      right now? Give us a call and we’ll help you out.
+    </p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <Button href={business.phoneHref} variant="primary">
+        <span aria-hidden="true">📞</span> Call {business.phone}
+      </Button>
+      <Button href="/" variant="secondary">Back to Home</Button>
+    </div>
+  </section>
+</BaseLayout>

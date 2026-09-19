@@ -1,0 +1,21 @@
+---
+// Card for a single service-area city.
+const { city } = Astro.props;
+const href = `/service-area/${city.slug}`;
+---
+
+<article
+  class="flex flex-col rounded-[14px] border border-border bg-surface p-5 shadow-[var(--shadow-card)] transition-shadow duration-150 hover:shadow-[var(--shadow-card-hover)]"
+>
+  <h3 class="text-lg font-bold text-blue">
+    <a href={href} class="hover:text-blue-hover">{city.name}</a>
+  </h3>
+  <p class="mt-2 flex-1 text-sm text-muted">{city.intro}</p>
+  <a
+    href={href}
+    class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue hover:text-blue-hover"
+  >
+    Trailer rentals in {city.name}
+    <span aria-hidden="true">&rarr;</span>
+  </a>
+</article>

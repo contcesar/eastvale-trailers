@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: Update the sitemap URL to your real domain (also set `site` in astro.config.mjs).
+Sitemap: https://eastvale-trailers.netlify.app/sitemap-index.xml
