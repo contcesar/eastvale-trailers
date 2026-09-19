@@ -90,11 +90,21 @@ const description = `${trailer.blurb} Rent one in Eastvale, CA, with day and wee
       </div>
 
       <div>
-        <!-- Large image slot. TODO: add a real photo for this trailer. -->
+        <!-- Large image slot. Shows the trailer photo, or a placeholder until one is added. -->
         <div
-          class="flex aspect-[4/3] items-center justify-center rounded-[16px] border border-border bg-surface text-muted shadow-[var(--shadow-card)]"
+          class="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[16px] border border-border bg-surface text-muted shadow-[var(--shadow-card)]"
         >
-          <span class="px-6 text-center text-sm">Photo of {trailer.name.toLowerCase()} coming soon</span>
+          <img
+            src={trailer.image}
+            alt={`${trailer.name} for rent at Eastvale Trailers`}
+            width="800"
+            height="600"
+            loading="eager"
+            decoding="async"
+            class="h-full w-full object-cover"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <span class="hidden px-6 text-center text-sm">Photo of {trailer.name.toLowerCase()} coming soon</span>
         </div>
 
         <div class="mt-8">

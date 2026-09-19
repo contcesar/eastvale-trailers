@@ -68,9 +68,9 @@ Everything below is marked `TODO` in the code so it's easy to find.
 | **Phone number** | `src/data/business.js` (`phone` and `phoneHref`); replace `(951) 555-0123` |
 | **Business name, hours** | `src/data/business.js` |
 | **Production URL** | `site` in `astro.config.mjs`, `url` in `src/data/business.js`, and `public/robots.txt` |
-| **Logo** | `public/images/eastvale-trailers-logo.png` (used in `src/components/Header.astro`) and `public/favicon.svg` |
-| **Hero photo** | `public/images/hero.png`, referenced in `src/pages/index.astro` |
-| **Trailer photos** | `public/images/trailers/*.jpg` (paths set in `src/data/trailers.js`) |
+| **Logo** | `public/images/eastvale-trailers-logo.webp` (used in `src/components/Header.astro`) and `public/favicon.svg` |
+| **Hero photo** | `public/images/hero.webp`, referenced in `src/pages/index.astro` |
+| **Trailer photos** | `public/images/trailers/*.webp` (paths set in `src/data/trailers.js`) |
 | **Trailer rates** | `starterRate` in `src/data/trailers.js` and the rates table in `src/pages/trailers/[type].astro` |
 | **Trailer copy** | `src/data/trailers.js` |
 | **City intros** | `src/data/cities.js` |

@@ -11,7 +11,7 @@ export const trailers = [
   {
     slug: 'enclosed',
     name: 'Enclosed Trailers',
-    image: '/images/trailers/enclosed.jpg',
+    image: '/images/trailers/enclosed.webp',
     blurb: 'Keep your load dry and out of sight.',
     description:
       'An enclosed trailer keeps your load dry and locked up while you tow. Good for furniture, tools, or a motorcycle you do not want out in the rain. We rent them from 16 to 34 feet, with a ramp or barn doors for loading.',
@@ -34,7 +34,7 @@ export const trailers = [
   {
     slug: 'flatbed',
     name: 'Flatbed Trailers',
-    image: '/images/trailers/flatbed.jpg',
+    image: '/images/trailers/flatbed.webp',
     blurb: 'Open deck for big, awkward loads.',
     description:
       'A flatbed gives you an open deck with no walls or roof. Load from any side and strap it down. Good for lumber, pallets, and loads that will not fit in an enclosed trailer. We rent them from 20 to 26 feet.',
@@ -55,7 +55,7 @@ export const trailers = [
   {
     slug: 'tilt',
     name: 'Tilt Trailers',
-    image: '/images/trailers/tilt.jpg',
+    image: '/images/trailers/tilt.webp',
     blurb: 'Deck tilts to the ground. No ramps.',
     description:
       'The deck tilts down to the ground, so you drive or roll the load right on. No ramps to line up. Good for low cars, mowers, and heavy rolling gear. We rent them from 20 to 26 feet.',
@@ -76,7 +76,7 @@ export const trailers = [
   {
     slug: 'car',
     name: 'Car Trailers',
-    image: '/images/trailers/car.jpg',
+    image: '/images/trailers/car.webp',
     blurb: 'Haul a car low and level.',
     description:
       'A car trailer carries a vehicle level, with tie-down points and a low deck for easy loading. Good for a project car, a new buy, or a car that will not start. We rent single-car and two-car trailers from 18 to 34 feet.',
@@ -98,7 +98,7 @@ export const trailers = [
   {
     slug: 'utility',
     name: 'Utility Trailers',
-    image: '/images/trailers/utility.jpg',
+    image: '/images/trailers/utility.webp',
     blurb: 'Everyday hauling for yard work and moving.',
     description:
       'A utility trailer handles the everyday stuff. Open sides, a low deck, and a fold-down ramp gate. Load yard debris, mulch, appliances, or moving boxes and go.',
@@ -114,7 +114,7 @@ export const trailers = [
   {
     slug: 'gooseneck',
     name: 'Gooseneck Trailers',
-    image: '/images/trailers/gooseneck.jpg',
+    image: '/images/trailers/gooseneck.webp',
     blurb: 'Heavy loads with a stable gooseneck hitch.',
     description:
       'A gooseneck hitches over your truck\'s rear axle, so it tows steady and turns tighter than a bumper-pull. Built for the heaviest loads. We rent them at 30 and 40 feet.',
